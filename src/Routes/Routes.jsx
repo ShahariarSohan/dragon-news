@@ -6,6 +6,7 @@ import Career from "../Pages/Career";
 import News from "../Pages/News";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivateRoot from "./PrivateRoot";
 
 const myRouter = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const myRouter = createBrowserRouter([
       },
       {
         path: "/news/:id",
-        element: <News></News>,
+        element: (
+          <PrivateRoot>
+            <News></News>
+          </PrivateRoot>
+        ),
         loader: () => fetch("../data/news.json"),
       },
       {
