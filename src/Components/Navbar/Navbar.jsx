@@ -76,7 +76,7 @@ const Navbar = () => {
       <div className="navbar-end gap-4 ">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src="../../../src/assets/user.png" />
+            <img src={user ? user?.photoURL : "../../../src/assets/user.png"} />
           </div>
         </label>
         {user ? (
