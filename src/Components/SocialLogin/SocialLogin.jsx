@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import toast from "react-hot-toast";
 import {
   FaGoogle,
   FaGithub,
@@ -6,12 +8,22 @@ import {
   FaInstagram,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 const SocialLogin = () => {
+  const { googleSignIn } = useContext(AuthContext);
+  const handleSocialLogin = (media) => {
+    media()
+      .then(() => toast.success("Successfully logged in"))
+      .catch(() => toast.error("There is an error"));
+  };
   return (
     <div className=" space-y-5">
       <div className=" space-y-2">
         <h1 className="font-bold">Login With</h1>
-        <button className="w-full btn btn-outline border-blue-500">
+        <button
+          onClick={() => handleSocialLogin(googleSignIn)}
+          className="w-full btn btn-outline border-blue-500"
+        >
           <FaGoogle></FaGoogle>Login with Google
         </button>
         <button className="w-full btn btn-outline border-blue-500">
