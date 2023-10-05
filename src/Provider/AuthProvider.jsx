@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -31,7 +32,11 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
-
+  const githubProvider = new GithubAuthProvider();
+  const githubSignIn = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
+  };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -40,7 +45,15 @@ const AuthProvider = ({ children }) => {
     });
     return () => unSubscribe();
   }, []);
-  const authInfo = { user, createUser, Login, LogOut, loading, googleSignIn };
+  const authInfo = {
+    user,
+    createUser,
+    Login,
+    LogOut,
+    loading,
+    googleSignIn,
+    githubSignIn,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

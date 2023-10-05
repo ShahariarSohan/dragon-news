@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 const SocialLogin = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, githubSignIn } = useContext(AuthContext);
   const handleSocialLogin = (media) => {
     media()
       .then(() => toast.success("Successfully logged in"))
@@ -26,7 +26,10 @@ const SocialLogin = () => {
         >
           <FaGoogle></FaGoogle>Login with Google
         </button>
-        <button className="w-full btn btn-outline border-blue-500">
+        <button
+          onClick={() => handleSocialLogin(githubSignIn)}
+          className="w-full btn btn-outline border-blue-500"
+        >
           <FaGithub></FaGithub>Login with Github
         </button>
       </div>
