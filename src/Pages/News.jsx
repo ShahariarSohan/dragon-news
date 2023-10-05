@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import Banner from "../Components/Banner/Banner";
 import RightNavbar from "../Components/RightNavbar/RightNavbar";
 import NewsDetails from "../Components/NewsDetails/NewsDetails";
+import Navbar from "../Components/Navbar/Navbar";
 
 const News = () => {
   const { id } = useParams();
@@ -10,6 +11,7 @@ const News = () => {
   return (
     <div>
       <Banner></Banner>
+      <Navbar></Navbar>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7  my-10 ">
         <div className="lg:col-span-3  space-y-5">
           <NewsDetails key={news._id} news={news}></NewsDetails>
