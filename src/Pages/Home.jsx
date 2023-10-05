@@ -15,7 +15,7 @@ const Home = () => {
       <Navbar></Navbar>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7  my-10 ">
         <LeftNavbar></LeftNavbar>
-        <div className="lg:col-span-2  space-y-5">
+        <div className="lg:col-span-2  space-y-5 ">
           {news?.map((anews) => (
             <NewsCenter key={anews._id} news={anews}></NewsCenter>
           ))}

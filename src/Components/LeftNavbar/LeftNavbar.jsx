@@ -2,7 +2,7 @@ import NewsCategory from "../NewsCategory/NewsCategory";
 
 const LeftNavbar = () => {
   return (
-    <div className="h-[450px] border">
+    <div className=" border">
       <h1>All Category</h1>
       <NewsCategory></NewsCategory>
     </div>
